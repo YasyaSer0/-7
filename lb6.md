@@ -56,9 +56,228 @@
 ---
 
 ## Завдання для попередньої підготовки
-### Glossary of Basic English Terms 
+### Glossary of Basic English Terms
+
+**Compression - the process of reducing the size of a file using mathematical algorithms.**
+
+**Archive - a file that combines multiple files or directories into a single file for easier storage or transfer.**
+
+**Archiving - the process of collecting and storing multiple files in one archive file.**
+
+**Lossy compression - a type of compression where some original data is permanently removed to reduce file size.**
+
+**Lossless compression - a type of compression where the original file can be completely restored after decompression.**
+
+**Algorithm - a set of mathematical rules used to compress or process data.**
+
+**gzip - a compression utility that uses the DEFLATE algorithm to reduce file size.**
+
+**bzip2 - a compression tool that uses the Burrows–Wheeler algorithm to compress files.**
+
+**xz - a compression program that uses the LZMA2 algorithm and provides a high compression ratio.**
+
+**tar (Tape Archive) - a command used to create archive files that store multiple files and directories together.**
+
+**Dictionary (compression dictionary) - a structure used in compression algorithms to store repeated patterns of data.**
+
+**Adaptive compression - a compression method that analyzes data while processing and dynamically updates the compression dictionary.**
+
+**Bandwidth - the amount of data that can be transmitted through a network connection in a given time.**
+
+**Compatibility - the ability of software or file formats to work across different systems and platforms.**
+
+**Decompression - the process of restoring compressed data back to its original form.**
 
 ## Відповіді на теоретичні питання
+
+### 1. Яке призначення команд tar, xz, zip, bzip2, gzip
+
+## tar
+
+Команда tar (Tape Archive) використовується для створення архівів. Вона дозволяє об’єднати кілька файлів або цілу директорію в один файл-архів. Часто використовується для створення резервних копій даних.
+
+Основні параметри:
+- -c - створити архів
+- -x - розпакувати архів
+- -v - показувати процес виконання команди
+- -f - вказати ім’я архівного файлу
+- -z - використати стиснення gzip
+
+Встановлення:
+```bash
+sudo apt install tar
+```
+gzip
+
+Команда gzip використовується для стиснення файлів. Вона зменшує розмір файлу та створює файл із розширенням .gz.
+
+Основні параметри:
+- -d - розпакувати файл
+- -k - залишити оригінальний файл
+- -v - показати детальну інформацію
+
+Встановлення:
+```bash
+sudo apt install gzip
+```
+## bzip2
+
+Команда bzip2 також використовується для стиснення файлів. Вона створює архіви з розширенням .bz2 та забезпечує досить хороший рівень стиснення.
+
+Основні параметри:
+- -d - розпакувати файл
+- -k - зберегти оригінальний файл
+- -v - детальний режим
+
+Встановлення:
+```bash
+sudo apt install bzip2
+```
+## xz
+
+Команда xz використовується для стиснення файлів з дуже високим рівнем стиснення. Вона створює файли з розширенням .xz.
+
+Основні параметри:
+- -d - розпакування файлу
+- -k - зберегти оригінальний файл
+- -v - детальний режим
+
+Встановлення:
+```bash
+sudo apt install xz-utils
+```
+## zip
+
+Команда zip використовується для створення архівів зі стисненням. Такий формат архівів часто використовується в різних операційних системах, особливо у Windows.
+
+Основні параметри:
+- -r - архівувати директорію разом з усім її вмістом
+- -v - детальний режим
+- -q - тихий режим
+
+Встановлення:
+```bash
+sudo apt install zip unzip
+```
+### 2. Приклади архівування та стиснення даних
+
+Приклад 1 - створення архіву tar
+```bash
+tar -cvf backup.tar /etc
+```
+Ця команда створює архів backup.tar, який містить директорію /etc.
+
+Приклад 2 - створення архіву з використанням gzip
+```bash
+tar -zcvf backup.tar.gz /etc
+```
+Тут створюється архів backup.tar.gz, де файли додатково стискаються за допомогою gzip.
+
+Приклад 3 - створення zip архіву
+```bash
+zip -r archive.zip /etc
+```
+Ця команда створює архів archive.zip, який містить директорію /etc.
+
+### 3. Яке призначення команд cat, less, more, head, tail
+
+## cat
+
+Команда cat використовується для перегляду вмісту текстових файлів або для об’єднання кількох файлів в один.
+
+Основні параметри:
+- -n - показати нумерацію рядків
+- -b - нумерувати тільки непорожні рядки
+
+Встановлення:
+```bash
+sudo apt install coreutils
+```
+less
+
+Команда less використовується для зручного перегляду великих текстових файлів. Вона дозволяє прокручувати текст вперед і назад та виконувати пошук.
+
+Основні параметри:
+- / - пошук слова
+- q - вихід з програми
+
+Встановлення:
+```bash
+sudo apt install less
+```
+more
+
+Команда more також використовується для перегляду файлів посторінково. Вона показує текст частинами, щоб його було зручніше читати.
+
+Основні параметри:
+- space - перейти до наступної сторінки
+- q - вихід
+
+Встановлення:
+```bash
+sudo apt install moreutils
+```
+head
+
+Команда head використовується для відображення перших рядків файлу. За замовчуванням показує перші 10 рядків.
+
+Основний параметр:
+
+-n - кількість рядків
+
+Приклад:
+```bash
+head -5 file.txt
+tail
+```
+Команда tail показує останні рядки файлу. За замовчуванням також відображає 10 рядків.
+
+Основні параметри:
+- -n - кількість рядків
+- -f - перегляд змін у файлі в реальному часі
+
+Приклад:
+```bash
+tail -5 file.txt
+```
+### 4. Принцип роботи командної оболонки з каналами, потоками та фільтрами
+
+У Linux кожна команда працює з потоками даних.
+
+Основні потоки:
+- stdin - стандартний потік введення
+- stdout - стандартний потік виводу
+- stderr - потік повідомлень про помилки
+
+За допомогою перенаправлення можна записувати результат виконання команди у файл.
+
+Також у Linux використовується канал (pipe) |, який дозволяє передавати результат виконання однієї команди іншій команді.
+
+Наприклад:
+```bash
+ls -l | more
+```
+У цьому випадку результат команди ls -l передається команді more, яка відображає його посторінково.
+
+Фільтри - це команди, які обробляють текстові дані, що надходять через стандартний ввід. До таких команд належать grep, sort, cut, head, tail.
+
+### 5. Яке призначення команди grep
+
+Команда grep використовується для пошуку певного слова або шаблону у файлах чи у виводі інших команд.
+
+Вона перевіряє кожен рядок тексту та виводить ті рядки, які містять заданий шаблон.
+
+Основні параметри:
+- -i - пошук без врахування регістру
+- -n - показ номерів рядків
+- -r - пошук у всіх файлах директорії
+- -E - використання розширених регулярних виразів
+
+Приклад:
+```bash
+grep root /etc/passwd
+```
+Ця команда знаходить усі рядки у файлі /etc/passwd, які містять слово root.
 
 ## Хід роботи
 ### 1.1 Запуск операційної системи
