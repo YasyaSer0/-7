@@ -873,3 +873,13 @@ ls wrongfile 2> /dev/null
 - приховування помилок у скриптах;
 - ігнорування непотрібного виводу команд;
 - тестування роботи програм.
+
+### Conclusion 
+
+During the laboratory work the basic tools for archiving and compressing files in the Linux operating system were studied. The functionality of commands such as tar, gzip, bzip2, xz and zip was analyzed, as well as their main parameters and practical usage.
+
+In the course of the work different archive formats were created, their contents were viewed and files were extracted from archives. In addition, the principles of input and output redirection in the Bash shell were studied, including the use of standard streams stdin, stdout and stderr, as well as the use of pipes to transfer command output between processes.
+
+Examples of stream redirection were also analyzed, which helped to better understand how the Linux command line works.
+
+As a result, practical skills of working with archiving, file compression and stream redirection in Bash were obtained. These tools are important for both regular users and system administrators when working with Linux operating systems.
