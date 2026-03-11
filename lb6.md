@@ -636,3 +636,145 @@ ls wrongfile 2>&1 | sort
 <img width="707" height="93" alt="image" src="https://github.com/user-attachments/assets/85b8fc4f-5f48-476e-b657-5ebe6315e341" />
 
 Рисунок 22 - Передача стандартного виводу та потоку помилок через канал |
+
+### 1.6 Перенаправлення потоків у Bash
+
+У цьому завданні було розглянуто приклади використання перенаправлення потоків введення та виведення в командній оболонці Bash. Було проаналізовано декілька команд, які демонструють використання стандартних потоків stdin (0), stdout (1) та stderr (2), а також використання каналів (pipe) для передавання результатів між командами.
+
+| Команда | Що виконує команда? | Який тип перенаправлення |
+|---|---|---|
+| `echo "It is a new story." > story` | Записує текст **"It is a new story."** у файл `story`. Якщо файл вже існує, його вміст буде перезаписано. | стандартний вивід `stdout (>)` |
+| `date > date.txt` | Записує поточну дату і час у файл `date.txt`. | стандартний вивід `stdout (>)` |
+| `cat file1 file2 file3 > bigfile` | Об’єднує вміст файлів `file1`, `file2` та `file3` і записує результат у файл `bigfile`. | стандартний вивід `stdout (>)` |
+| `ls -l >> directory` | Додає результат виконання команди `ls -l` у кінець файлу `directory`, не перезаписуючи попередній вміст. | стандартний вивід `stdout (>>)` |
+| `sort < file1_unsorted > file2_sorted` | Зчитує дані з файлу `file1_unsorted`, сортує їх і записує результат у файл `file2_sorted`. | стандартний ввід `stdin (<)` та стандартний вивід `stdout (>)` |
+| `find -name "*.txt" > file.txt 2> /dev/null` | Шукає файли з розширенням `.txt`. Результат записується у файл `file.txt`, а повідомлення про помилки перенаправляються у `/dev/null`. | `stdout (>)`, `stderr (2>)` |
+| `cat file1_unsorted \| sort > file2_sorted` | Передає вміст файлу `file1_unsorted` через канал `pipe` до команди `sort`, після чого результат записується у файл `file2_sorted`. | канал `pipe (|)` та `stdout (>)` |
+| `cat myfile \| grep student \| wc -l` | Знаходить рядки зі словом `student` у файлі `myfile` та підраховує їх кількість. | канал `pipe (|)` |
+
+### Демонстрація виконання команд
+
+**Підготовка робочої директорії**
+
+Для виконання прикладів було створено робочу директорію streams_lab та підготовлено тестові файли.
+```bash
+cd
+rm -rf streams_lab
+mkdir streams_lab
+cd streams_lab
+```
+Також було створено декілька текстових файлів, які використовуються для демонстрації команд.
+```bash
+echo "apple" > file1
+echo "orange" > file2
+echo "banana" > file3
+
+echo "student Yaroslava" > myfile
+echo "student Anna" >> myfile
+echo "teacher Petro" >> myfile
+
+echo "dog" > file1_unsorted
+echo "cat" >> file1_unsorted
+echo "apple" >> file1_unsorted
+```
+
+<img width="730" height="325" alt="image" src="https://github.com/user-attachments/assets/35a1ab24-f1d8-4aa1-81d9-c97af835f42c" />
+
+Рисунок 23 - Створення робочої директорії та тестових файлів
+
+**Перенаправлення стандартного виводу у файл**
+
+Команда echo виводить текст у термінал. За допомогою оператора > стандартний вивід (stdout) записується у файл.
+```bash
+echo "It is a new story." > story
+cat story
+```
+
+<img width="779" height="95" alt="image" src="https://github.com/user-attachments/assets/0a8d6708-1649-4eb7-8744-9a3301f1577f" />
+
+Рисунок 24 - Перенаправлення стандартного виводу у файл
+
+**Запис результату виконання команди**
+
+Команда date виводить поточну дату та час. За допомогою перенаправлення результат записується у файл.
+```bash
+date > date.txt
+cat date.txt
+```
+
+<img width="559" height="92" alt="image" src="https://github.com/user-attachments/assets/70d0421d-a2d8-47d8-8ccc-ee421a3ab3ef" />
+
+Рисунок 25 - Запис результату команди date у файл
+
+**Об'єднання кількох файлів**
+
+Команда cat дозволяє об’єднати вміст кількох файлів у один.
+```bash
+cat file1 file2 file3 > bigfile
+cat bigfile
+```
+
+<img width="733" height="151" alt="image" src="https://github.com/user-attachments/assets/69b2ffaf-99a3-421b-a0df-94dfd379ec3b" />
+
+Рисунок 26 - Об’єднання кількох файлів у один файл
+
+**Додавання результату до файлу**
+
+Оператор >> використовується для додавання інформації у кінець файлу.
+```bash
+touch directory
+ls -l >> directory
+cat directory
+```
+
+<img width="683" height="346" alt="image" src="https://github.com/user-attachments/assets/6468cc55-be4b-4b7a-9e68-6e72de263e80" />
+
+Рисунок 27 - Додавання результату виконання команди у кінець файлу
+
+**Використання stdin та stdout**
+
+Команда sort сортує рядки у файлі. У даному випадку використано перенаправлення stdin та stdout.
+```bash
+sort < file1_unsorted > file2_sorted
+cat file2_sorted
+```
+
+<img width="794" height="150" alt="image" src="https://github.com/user-attachments/assets/fe67d715-3e62-4e16-9206-3a307316999f" />
+
+Рисунок 28 - Сортування даних з використанням перенаправлення потоків
+
+**Перенаправлення потоку помилок**
+
+Команда find виконує пошук файлів. Повідомлення про помилки перенаправляються у спеціальний файл /dev/null, що означає їх ігнорування.
+```bash
+find -name "*.txt" > file.txt 2> /dev/null
+cat file.txt
+```
+
+<img width="830" height="124" alt="image" src="https://github.com/user-attachments/assets/ad271922-eb41-4956-af7c-9403f85bcc03" />
+
+Рисунок 29 - Перенаправлення потоку помилок у /dev/null
+
+**Використання pipe**
+
+Pipe дозволяє передавати результат виконання однієї команди іншій.
+```bash
+cat file1_unsorted | sort > file2_sorted
+cat file2_sorted
+```
+
+<img width="800" height="151" alt="image" src="https://github.com/user-attachments/assets/41682d82-b3a0-49ac-8d6d-9f52266229e7" />
+
+Рисунок 30 - Використання каналу pipe для передачі даних між командами
+
+**Використання кількох команд з pipe**
+
+У цьому прикладі використовується декілька команд, з'єднаних каналами.
+```bash
+cat myfile | grep student | wc -l
+```
+Команда grep знаходить рядки зі словом student, а команда wc -l підраховує їх кількість.
+
+<img width="778" height="77" alt="image" src="https://github.com/user-attachments/assets/4d69c703-9c8d-4528-8603-3595086de908" />
+
+Рисунок 31 - Підрахунок рядків із використанням декількох команд
