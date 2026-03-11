@@ -366,3 +366,122 @@ grep root /etc/passwd
 | egrep 'no(b\|n)' passwd | Команда **egrep** використовує розширені регулярні вирази. У цьому випадку знаходяться слова **nob** або **non**. |
 | head passwd \| grep '[0-9]' | Команда **grep** шукає будь-яку цифру (**[0-9]**) у рядках, переданих з команди **head**. |
 | grep -E '[0-9]{3}' passwd | Команда **grep -E** шукає послідовності з **трьох цифр** у файлі **passwd**. |
+
+### 1.4 Робота з командою tar у терміналі
+
+**Підготовка середовища**
+
+Перед виконанням архівування було створено робочу директорію tar_lab, у якій будуть виконуватися всі подальші дії.
+
+<img width="461" height="143" alt="image" src="https://github.com/user-attachments/assets/956739dc-fcd4-485e-8aa1-e34fd516f236" />
+
+Рисунок 1 - Створення робочої директорії tar_lab
+
+**Підготовка тестових файлів**
+
+У робочій директорії було створено два текстові файли file1.txt, file2.txt, а також директорію docs, у якій створено файли note1.txt та note2.txt.
+
+<img width="658" height="233" alt="image" src="https://github.com/user-attachments/assets/4314b7fa-be27-4b06-9cf8-1c4697ffcf18" />
+
+Рисунок 2 - Створення тестових файлів та директорії docs
+
+**1. Створення архівного файлу з розширенням .tar**
+
+Для створення архіву використовується команда:
+```bash
+tar -cvf archive1.tar file1.txt
+```
+де:
+- -c - створити архів
+- -v - відобразити процес архівування
+- -f - задати ім’я архіву
+
+<img width="746" height="126" alt="image" src="https://github.com/user-attachments/assets/c4d3f0e8-e02e-46d3-8480-2dc9c2430c6e" />
+
+Рисунок 3 - Створення архівного файлу archive1.tar
+
+**2. Створення архіву з кількох файлів і директорії**
+
+Для архівування декількох файлів і каталогу використовується команда:
+```bash
+tar -cvf archive2.tar file1.txt file2.txt docs
+```
+До архіву додаються:
+- файл file1.txt
+- файл file2.txt
+- директорія docs
+
+<img width="848" height="198" alt="image" src="https://github.com/user-attachments/assets/c1070441-c8df-4f03-9286-fd35c1c9b738" />
+
+Рисунок 4 - Створення архіву archive2.tar з декількох файлів і директорії
+
+**3. Перегляд вмісту архіву**
+
+Для перегляду файлів всередині архіву використовується параметр -t.
+```bash
+tar -tvf archive2.tar
+```
+Команда відображає список усіх файлів і директорій, що містяться в архіві.
+
+<img width="695" height="169" alt="image" src="https://github.com/user-attachments/assets/1a764d80-ac46-4db1-8da9-1e4c8db107bd" />
+
+Рисунок 5 - Перегляд вмісту архіву archive2.tar
+
+**4. Витягнення вмісту архіву .tar**
+
+Для розпакування архіву використовується параметр -x.
+```bash
+mkdir extract_tar
+cd extract_tar
+tar -xvf ../archive2.tar
+```
+Файли з архіву витягуються у новостворену директорію.
+
+<img width="783" height="289" alt="image" src="https://github.com/user-attachments/assets/f35ea348-dee8-4c86-af35-4d16378fae2e" />
+
+Рисунок 6 - Витягнення файлів з архіву archive2.tar
+
+**5. Створення архіву .tar.bz2 (bzip2)**
+
+Для створення архіву зі стисненням bzip2 використовується параметр -j.
+```bash
+tar -cjvf archive_bzip.tar.bz2 file1.txt docs
+```
+
+<img width="845" height="230" alt="image" src="https://github.com/user-attachments/assets/172f5cb1-2aba-44e8-9fec-a562f223d5bc" />
+
+Рисунок 7 - Створення архіву archive_bzip.tar.bz2 зі стисненням bzip2
+
+**6. Витягнення архіву .tar.bz2**
+   
+```bash
+mkdir extract_bzip
+cd extract_bzip
+tar -xjvf ../archive_bzip.tar.bz2
+```
+
+<img width="857" height="279" alt="image" src="https://github.com/user-attachments/assets/b6ccf015-0272-4e64-be44-8c4646bab34d" />
+
+Рисунок 8 - Витягнення файлів з архіву archive_bzip.tar.bz2
+
+**7. Створення архіву .tar.gz (gzip)**
+
+Для створення архіву зі стисненням gzip використовується параметр -z.
+```bash
+tar -zcvf archive_gzip.tar.gz file2.txt docs
+```
+
+<img width="829" height="217" alt="image" src="https://github.com/user-attachments/assets/3df802c7-b5c3-4861-a6e7-93d6961f5a62" />
+
+Рисунок 9 - Створення архіву archive_gzip.tar.gz зі стисненням gzip
+
+**8. Витягнення архіву .tar.gz**
+ ```bash
+mkdir extract_gzip
+cd extract_gzip
+tar -xzvf ../archive_gzip.tar.gz
+```
+
+<img width="817" height="272" alt="image" src="https://github.com/user-attachments/assets/17c97ea9-52b2-4bb8-9337-1854a7a57ba3" />
+
+Рисунок 10 - Витягнення файлів з архіву archive_gzip.tar.gz
