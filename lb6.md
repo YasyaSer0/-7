@@ -528,6 +528,8 @@ cat out1.txt
 ```
 У результаті стандартний вивід було записано у файл out1.txt.
 
+<img width="774" height="99" alt="image" src="https://github.com/user-attachments/assets/8d719836-49b5-4898-a66d-f71ad011e254" />
+
 Рисунок 12 - Перенаправлення стандартного виводу у файл за допомогою 1>
 
 **Для прикладу cmd > file було використано команду:**
@@ -537,6 +539,8 @@ cat out2.txt
 ```
 У результаті текст було записано у файл out2.txt.
 
+<img width="769" height="96" alt="image" src="https://github.com/user-attachments/assets/fd6c1223-0102-4678-a6ad-e7864d073615" />
+
 Рисунок 13 - Перенаправлення стандартного виводу у файл за допомогою >
 
 **Для прикладу cmd 2> file було використано команду:**
@@ -545,6 +549,8 @@ ls wrongfile 2> error.txt
 cat error.txt
 ```
 У результаті повідомлення про помилку було записано у файл error.txt.
+
+<img width="697" height="90" alt="image" src="https://github.com/user-attachments/assets/1d0bd9b4-da2f-4234-8ebb-95b0e3434bf4" />
 
 Рисунок 14 - Перенаправлення потоку помилок у файл
 
@@ -556,6 +562,8 @@ cat append.txt
 ```
 У результаті другий рядок було додано в кінець файлу, а не перезаписано його.
 
+<img width="723" height="135" alt="image" src="https://github.com/user-attachments/assets/977d3b55-dadf-49c3-b393-02a68d498533" />
+
 Рисунок 15 - Додавання стандартного виводу в кінець файлу
 
 **Для прикладу cmd &> file було використано команду:**
@@ -564,6 +572,8 @@ ls test.txt wrongfile &> both.txt
 cat both.txt
 ```
 У результаті і звичайний результат команди, і повідомлення про помилку були записані в один файл both.txt.
+
+<img width="826" height="125" alt="image" src="https://github.com/user-attachments/assets/3b8305ff-cca2-4468-9f0a-22ffb0a2fb5d" />
 
 Рисунок 16 - Перенаправлення стандартного виводу та потоку помилок в один файл
 
@@ -583,6 +593,8 @@ cat all.txt
 ```
 У результаті нове повідомлення про помилку було додано у кінець файлу all.txt.
 
+<img width="748" height="157" alt="image" src="https://github.com/user-attachments/assets/d359732b-7c41-4e19-932b-beff058c7fcb" />
+
 Рисунок 18 - Додавання stdout і stderr у кінець існуючого файлу
 
 **Для прикладу cmd 2>&1 > /dev/null було використано команду:**
@@ -590,6 +602,8 @@ cat all.txt
 ls wrongfile 2>&1 > /dev/null
 ```
 У результаті стандартний вивід не відображався, а повідомлення про помилку залишилося на екрані.
+
+<img width="758" height="89" alt="image" src="https://github.com/user-attachments/assets/fec55d5d-45c0-489f-b83e-6da11efea163" />
 
 Рисунок 19 - Перенаправлення stdout у /dev/null зі збереженням stderr на екрані
 
@@ -599,6 +613,8 @@ ls wrongfile 2> /dev/null
 ```
 У результаті повідомлення про помилку не відображалося, оскільки було перенаправлене в /dev/null.
 
+<img width="727" height="67" alt="image" src="https://github.com/user-attachments/assets/5be61e90-c775-48e0-bd7f-9a3da33b4d49" />
+
 Рисунок 20 - Приховування потоку помилок за допомогою /dev/null
 
 **Для прикладу cmd1 | cmd2 було використано команду:**
@@ -607,6 +623,8 @@ ls | sort
 ```
 У результаті список файлів, отриманий від команди ls, був переданий команді sort і відсортований.
 
+<img width="579" height="213" alt="image" src="https://github.com/user-attachments/assets/3d7c9960-c949-42a5-8526-79565fb615f7" />
+
 Рисунок 21 - Передача результату однієї команди іншій через канал |
 
 **Для прикладу cmd1 2>&1 | cmd2 було використано команду:**
@@ -614,5 +632,7 @@ ls | sort
 ls wrongfile 2>&1 | sort
 ```
 У результаті повідомлення про помилку також було передано через канал до наступної команди.
+
+<img width="707" height="93" alt="image" src="https://github.com/user-attachments/assets/85b8fc4f-5f48-476e-b657-5ebe6315e341" />
 
 Рисунок 22 - Передача стандартного виводу та потоку помилок через канал |
