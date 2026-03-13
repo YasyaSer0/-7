@@ -792,18 +792,21 @@ cat myfile | grep student | wc -l
 Таким чином, архівування використовується для об’єднання файлів, а стискання - для зменшення їхнього розміру. Часто ці процеси використовуються разом (наприклад, створення архіву tar.gz або tar.bz2).
 
 <img width="739" height="279" alt="image" src="https://github.com/user-attachments/assets/fa7a8062-2107-4ccf-97cb-d5abeb9d8c95" />
+
 Скрін 1 - до стискання
 ```bash
 file1.txt
 ```
 
 <img width="587" height="46" alt="image" src="https://github.com/user-attachments/assets/39f131fe-132a-4c18-b418-0b0871c12327" />
+
 Скрін 2 - команда
 ```bash
 gzip file1.txt
 ```
 
 <img width="760" height="263" alt="image" src="https://github.com/user-attachments/assets/802c6bd8-681e-4a52-982a-8960d5a97ae0" />
+
 Скрін 3 - після стискання
 ```bash
 file1.txt.gz
