@@ -973,6 +973,21 @@ tar -czvf backup.tar.gz /home
 - розповсюдження програмного забезпечення;
 - зменшення обсягу дискового простору.
 
+Наприклад, системний адміністратор може створити архів важливих директорій за допомогою команди:
+```bash
+tar -czvf backup.tar.gz docs
+```
+
+<img width="679" height="114" alt="image" src="https://github.com/user-attachments/assets/7b988993-3d97-460a-aa30-119801a4371b" />
+
+Рисунок 46 - Створення резервного архіву директорії docs
+
+Після виконання команди створюється архів, що містить резервну копію файлів.
+
+<img width="793" height="485" alt="image" src="https://github.com/user-attachments/assets/8667bb5f-8124-4bd6-b4e7-4f2c1620ccac" />
+
+Рисунок 47 - Результат створення резервної копії у вигляді архіву backup.tar.gz
+
 **7. Яке призначення файлу /dev/null?**
 
 Файл /dev/null у Linux - це спеціальний системний файл, який називають “чорною дірою” для даних.
@@ -990,12 +1005,30 @@ ls wrongfile 2> /dev/null
 - ігнорування непотрібного виводу команд;
 - тестування роботи програм.
 
+Наприклад:
+```bash
+ls wrongfile
+```
+
+<img width="612" height="64" alt="image" src="https://github.com/user-attachments/assets/3e066f15-f0a5-4863-a9ff-fe69257fdcbe" />
+
+Рисунок 48 - Виведення повідомлення про помилку при виконанні команди ls wrongfile
+
+Якщо перенаправити потік помилки у /dev/null:
+```bash
+ls wrongfile 2> /dev/null
+```
+
+<img width="650" height="67" alt="image" src="https://github.com/user-attachments/assets/7697a726-c7e0-4dd7-8d39-82cd36d572f9" />
+
+Рисунок 49 - Приховування повідомлення про помилку за допомогою /dev/null
+
 ### Conclusion 
 
-During the laboratory work the basic tools for archiving and compressing files in the Linux operating system were studied. The functionality of commands such as tar, gzip, bzip2, xz and zip was analyzed, as well as their main parameters and practical usage.
+During this laboratory work the basic tools for file compression and archiving in the Linux operating system were studied. The work included using commands such as tar, gzip, bzip2, and xz, as well as creating and extracting different types of archives.
 
-In the course of the work different archive formats were created, their contents were viewed and files were extracted from archives. In addition, the principles of input and output redirection in the Bash shell were studied, including the use of standard streams stdin, stdout and stderr, as well as the use of pipes to transfer command output between processes.
+During the work the redirection of output streams in the Bash terminal was also explored, including the use of standard output, error output and their redirection to files or to the special file /dev/null.
 
-Examples of stream redirection were also analyzed, which helped to better understand how the Linux command line works.
+In addition, the use of archiving for data backup was analyzed and compression algorithms were compared in terms of speed and efficiency. The software tools for file archiving in the Windows operating system were also reviewed.
 
-As a result, practical skills of working with archiving, file compression and stream redirection in Bash were obtained. These tools are important for both regular users and system administrators when working with Linux operating systems.
+As a result of this laboratory work practical skills in working with archives, file compression and managing output streams in the Linux environment were obtained.
